@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Website</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="/" class="logo">
+            <span class="fa fa-pencil"></span>
+            <span class="title">Blogging</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <% if (user) { %>
+          <img
+            src="<%= user.thumbnail %>"
+            style="width: 200px; height: 200px"
+          />
+          <p><%= user.username%></p>
+          <p><%= user.email%></p>
+          <% } %>
+          <li><a href="/" class="active">Home</a></li>
+
+          <li><a href="/about">About</a></li>
+
+          <% if (user) { %>
+          <li><a href="/profile">Profile</a></li>
+
+          <li><a href="/fav">Favourite Blogs</a></li>
+          <% } %> <% if (user) { %>
+          <li><a href="/auth/logout">Log out</a></li>
+          <% } else { %>
+          <li><a href="/auth/google">Login</a></li>
+          <% } %>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1>About Us</h1>
+
+          <div class="image main">
+            <img src="/img/img1.jpg" class="img-fluid" alt="" />
+          </div>
+
+          <p>
+            This is a Blogging Website, where you can upload blogs on various
+            topics, developed using ejs template engine and node js in the
+            backend.
+          </p>
+          <p>
+            Features present in the website are-
+            <br />
+            1. Explore various blogs according to the category.<br />
+            2. Add articles. <br />
+            3. Edit or Delete an article. <br />
+            4. Do chatting. <br />
+            5. Contact-Us. <br />
+            6. Add a blog to favourite list.<br />
+            7. A small chatbot to guide you. <br />
+            8. See Recent Blogs.<br />
+            9. Google login authentication.<br/>
+            10. Like a particular blog.<br/>
+            11. See top Liked Blogs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow Us</h2>
+
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://github.com/DEEPALI-SUK"
+                  class="icon style2 fa-github"
+                  ><span class="label">Deepali Sukhija</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/DEEPIKA-SUK"
+                  class="icon style2 fa-github"
+                  ><span class="label">Deepika Sukhija</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Bhavika-Gianey"
+                  class="icon style2 fa-github"
+                  ><span class="label">Bhavika Gianey</span></a
+                >
+              </li>
+            </ul>
+          </section>
+
+          <ul class="copyright">
+            <li>Copyright © 2021 Blogging Website</li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+    <a href="#" class="to-top" style="text-decoration: none; color: white">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Scripts -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

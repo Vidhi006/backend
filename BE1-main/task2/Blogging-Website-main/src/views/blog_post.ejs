@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Website</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="/" class="logo">
+            <span class="fa fa-pencil"></span>
+            <span class="title">Blogging</span>
+            <div class="col-4" style="float: right">
+              <a href="/" class="btn btn-lg" style="background-color: pink"
+                >All Blogs</a
+              >
+            </div>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <% if (user) { %>
+          <img
+            src="<%= user.thumbnail %>"
+            style="width: 200px; height: 200px"
+          />
+          <p><%= user.username%></p>
+          <p><%= user.email%></p>
+          <% } %>
+          <li><a href="/" class="active">Home</a></li>
+
+          <li><a href="/about">About</a></li>
+
+          <% if (user) { %>
+          <li><a href="/profile">Profile</a></li>
+
+          <li><a href="/fav">Favourite Blogs</a></li>
+          <% } %> <% if (user) { %>
+          <li><a href="/auth/logout">Log out</a></li>
+          <% } else { %>
+          <li><a href="/auth/google">Login</a></li>
+          <% } %>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <h1><%= article.title %></h1>
+          <% if (user) {%>
+          <h2 class="m-n">
+                      
+                       &nbsp;<a
+                        href="/fav/<%= article.slug %>"
+                        class="icon style2 fa-heart"
+                      ></a>
+                      <% if (user.username != article.author) {%>
+                      &nbsp;<a
+                        href="/like/<%= article.slug %>"
+                        class="icon style2 fa-thumbs-up"
+                      ></a>
+                      <% } %>
+                      
+                    </h2>
+                    <% } %>
+          <div class="text-muted mb-2">
+            <%= article.author %> <%= article.createdAt.toLocaleDateString() %>
+          </div>
+          <div class="image main">
+            <img style="width: 1920px; height: 500px;"
+              src="/uploads/<%= article.image %>"
+              class="img-fluid"
+              alt=""
+            />
+          </div>
+
+          <p><strong>Markdown: </strong><%- article.sanitizedHtml %></p>
+          <p><strong>Description: </strong><p><%- article.description %></p></p>
+          <p><strong>Likes: </strong><p><%- article.likes %></p></p>
+          <% if (user && user.username==article.author) { %>
+          <a
+            href="/edit/<%= article.id  %>"
+            class="btn btn-lg"
+            style="background-color: pink"
+            >Edit Blog</a
+          >
+
+          <form
+            action="/articles/<%= article.id %>?_method=DELETE"
+            method="POST"
+            class="d-inline"
+          >
+            <button type="submit">Delete</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Footer -->
+
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow Us</h2>
+
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://github.com/DEEPALI-SUK"
+                  class="icon style2 fa-github"
+                  ><span class="label">Deepali Sukhija</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/DEEPIKA-SUK"
+                  class="icon style2 fa-github"
+                  ><span class="label">Deepika Sukhija</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/Bhavika-Gianey"
+                  class="icon style2 fa-github"
+                  ><span class="label">Bhavika Gianey</span></a
+                >
+              </li>
+            </ul>
+          </section>
+
+          <ul class="copyright">
+            <li>Copyright © 2021 Blogging Website</li>
+          </ul>
+        </div>
+      </footer>
+    
+    </div>
+    <a href="#" class="to-top" style="text-decoration: none; color: white">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Scripts -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
